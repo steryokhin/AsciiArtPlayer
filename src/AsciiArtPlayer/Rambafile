@@ -1,0 +1,37 @@
+### Headers settings
+company: iMacDev
+
+### Xcode project settings
+project_name: AsciiArtPlayer
+xcodeproj_path: AsciiArtPlayer.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: AsciiArtPlayer
+
+# The file path for new modules
+project_file_path: AsciiArtPlayer/Classes/Presentation/User Stories
+
+# The Xcode group path to new modules
+project_group_path: AsciiArtPlayer/Classes/Presentation/User Stories
+
+### Tests generation settings section
+# The tests target name
+test_target: AsciiArtPlayerTests
+
+# The file path for new tests
+test_file_path: AsciiArtPlayerTests/Presentation/User Stories
+
+# The Xcode group path to new tests
+test_group_path: AsciiArtPlayerTests/Presentation/User Stories
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: viperSwift, local: templates/viperSwift}
+
+#- {name: local_template_name, local: 'absolute/file/path'}
+#- {name: remote_template_name, git: 'https://github.com/igrekde/remote_template'}
+#- {name: catalog_template_name}

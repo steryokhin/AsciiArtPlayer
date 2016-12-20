@@ -1,0 +1,80 @@
+PODS:
+  - AsyncDisplayKit (1.9.92):
+    - AsyncDisplayKit/PINRemoteImage (= 1.9.92)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.92)
+  - AsyncDisplayKit/Core (1.9.92):
+    - AsyncDisplayKit/ASDealloc2MainObject
+  - AsyncDisplayKit/PINRemoteImage (1.9.92):
+    - AsyncDisplayKit/Core
+    - PINCache (= 3.0.1-beta)
+    - PINRemoteImage/iOS (= 3.0.0-beta.3)
+  - Bolts-Swift (1.3.0)
+  - PermissionScope (1.1.1)
+  - PINCache (3.0.1-beta)
+  - PINRemoteImage/Core (3.0.0-beta.3):
+    - PINCache (>= 3.0.0-beta)
+  - PINRemoteImage/iOS (3.0.0-beta.3):
+    - PINRemoteImage/Core
+  - PromiseKit (4.0.4):
+    - PromiseKit/Foundation (= 4.0.4)
+    - PromiseKit/QuartzCore (= 4.0.4)
+    - PromiseKit/UIKit (= 4.0.4)
+  - PromiseKit/CorePromise (4.0.4)
+  - PromiseKit/Foundation (4.0.4):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.0.4):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.0.4):
+    - PromiseKit/CorePromise
+  - QorumLogs (0.9)
+  - R.swift (3.1.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - ReachabilitySwift (3)
+  - SnapKit (3.0.2)
+  - Sugar (3.0.0)
+  - SwiftyUtils (0.5.0)
+  - Swinject (2.0.0-beta.2)
+  - SwinjectStoryboard (1.0.0-beta.2):
+    - Swinject (= 2.0.0-beta.2)
+  - ViperMcFlurry (1.5.2)
+  - Watchdog (3.0)
+
+DEPENDENCIES:
+  - AsyncDisplayKit (= 1.9.92)
+  - Bolts-Swift (= 1.3.0)
+  - PermissionScope (= 1.1.1)
+  - PromiseKit (= 4.0.4)
+  - QorumLogs (= 0.9)
+  - R.swift (= 3.1.0)
+  - ReachabilitySwift
+  - SnapKit (= 3.0.2)
+  - Sugar (= 3.0.0)
+  - SwiftyUtils (= 0.5.0)
+  - Swinject (= 2.0.0-beta.2)
+  - SwinjectStoryboard (= 1.0.0-beta.2)
+  - ViperMcFlurry (= 1.5.2)
+  - Watchdog (= 3.0)
+
+SPEC CHECKSUMS:
+  AsyncDisplayKit: 49d94f5739669d666ff7cdc3430f43f0b2cfbeaf
+  Bolts-Swift: fa98d1b59fc1acea9b21a21306dcdca1c85e3737
+  PermissionScope: a30c16e015779ba27c97c124e7539e27b5829de2
+  PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
+  PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
+  PromiseKit: 8e8ee39d33ff199d92a1a883b5396f6285be6c91
+  QorumLogs: 9a484df6973a3697ac79fe2273140fde6b36dccc
+  R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  Sugar: 079e1375b76c8f0693474417836ef098f507ac50
+  SwiftyUtils: b10d936099bf74636d50755aa7e88cc4fea70912
+  Swinject: 69a893192efa9f2cc44be79ef423d04d571b6af9
+  SwinjectStoryboard: b52b45821a50386ef604c3cd098f8029a50a268d
+  ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
+  Watchdog: 141185b6b3a332a9f5721ea42dfa9681cf2d7c6b
+
+PODFILE CHECKSUM: 524e194822e3d07de143f6db4d6ff4eda27a7186
+
+COCOAPODS: 1.1.1
