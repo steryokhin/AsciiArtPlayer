@@ -33,6 +33,7 @@ PODS:
   - ReachabilitySwift (3)
   - SnapKit (3.0.2)
   - Sugar (3.0.0)
+  - SwiftyAttributes (2.0)
   - SwiftyUtils (0.5.0)
   - Swinject (2.0.0-beta.2)
   - SwinjectStoryboard (1.0.0-beta.2):
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - ReachabilitySwift
   - SnapKit (= 3.0.2)
   - Sugar (= 3.0.0)
+  - SwiftyAttributes (= 2.0)
   - SwiftyUtils (= 0.5.0)
   - Swinject (= 2.0.0-beta.2)
   - SwinjectStoryboard (= 1.0.0-beta.2)
@@ -69,12 +71,13 @@ SPEC CHECKSUMS:
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   Sugar: 079e1375b76c8f0693474417836ef098f507ac50
+  SwiftyAttributes: 27efd47ca5d41e72139d21f8fbe2f131bb3fbe0d
   SwiftyUtils: b10d936099bf74636d50755aa7e88cc4fea70912
   Swinject: 69a893192efa9f2cc44be79ef423d04d571b6af9
   SwinjectStoryboard: b52b45821a50386ef604c3cd098f8029a50a268d
   ViperMcFlurry: 701bc3ad8d188b1f1e157ec0ddf4e77184de88b5
   Watchdog: 141185b6b3a332a9f5721ea42dfa9681cf2d7c6b
 
-PODFILE CHECKSUM: 524e194822e3d07de143f6db4d6ff4eda27a7186
+PODFILE CHECKSUM: 9bb6fa4fd69048e2a33bd965d0483d936eff463a
 
 COCOAPODS: 1.1.1

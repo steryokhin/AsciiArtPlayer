@@ -9,7 +9,7 @@
 import Swinject
 import Foundation
 
-class ThirdPartyAssembly: AssemblyType {
+class ThirdPartyAssembly: AssemblyType, SwinjectAutoloaderProtocol {
     func assemble(container: Container) {
         container.register(ThirdPartyManagerProtocol.self) { _ in
             ThirdPartyManager()

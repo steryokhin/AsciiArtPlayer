@@ -13,7 +13,9 @@ import Foundation
 
 class ApplicationAssembly {
 	class var assembler: Assembler {
-		return try! Assembler(assemblies: [ThirdPartyAssembly(), HomeAssemblyContainer()])
+		return try! Assembler(assemblies: [ThirdPartyAssembly(),
+		                                   HomeAssemblyContainer(),
+		                                   PlayerAssemblyContainer()])
 	}
 	
 	var assembler: Assembler

@@ -17,4 +17,8 @@ class HomePresenter: HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
     func viewIsReady() {
         QL2("Home module is ready")
     }
+    
+    func viewShowPlayer() {
+        self.router.showPlayer()
+    }
 }

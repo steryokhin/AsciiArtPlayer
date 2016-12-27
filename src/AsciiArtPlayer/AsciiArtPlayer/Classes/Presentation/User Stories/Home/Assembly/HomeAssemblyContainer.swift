@@ -10,7 +10,7 @@ import UIKit
 import Swinject
 import SwinjectStoryboard
 
-class HomeAssemblyContainer: AssemblyType {
+class HomeAssemblyContainer: AssemblyType, SwinjectAutoloaderProtocol {
 	
 	func assemble(container: Container) {
 		container.register(HomeInteractor.self) { (r, presenter: HomePresenter) in
@@ -22,7 +22,7 @@ class HomeAssemblyContainer: AssemblyType {
 		
 		container.register(HomeRouter.self) { (r, viewController: HomeViewController) in
 			let router = HomeRouter()
-			//router.transitionHandler = viewController
+			router.transitionHandler = viewController
 			
 			return router
 		}

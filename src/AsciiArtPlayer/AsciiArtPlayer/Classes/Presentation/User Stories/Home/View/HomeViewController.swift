@@ -22,4 +22,9 @@ class HomeViewController: UIViewController, HomeViewInput {
 	// MARK: HomeViewInput
 	func setupInitialState() {
 	}
+    
+    // MARK: Actions
+    @IBAction func didTouchPlayButton() {
+        self.output.viewShowPlayer()
+    }
 }

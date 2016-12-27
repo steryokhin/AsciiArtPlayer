@@ -1,0 +1,33 @@
+//
+//  ASCIIVideoFrameConfiguration.swift
+//  AsciiArtPlayer
+//
+//  Created by Sergey Teryokhin on 26/12/2016.
+//  Copyright © 2016 iMacDev. All rights reserved.
+//
+
+import UIKit
+import Foundation
+
+/// Configuration class for video frame provider service
+struct ASCIIVideoFrameProviderConfiguration {
+    public let labelFont: UIFont
+    public let maxImageSize: CGSize
+    public lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
+    
+    @available(*, unavailable, message: "Use designated initialiser")
+    init() {
+        fatalError()
+    }
+    
+    init(_ labelFont: UIFont, _ maxImageSize: CGSize) {
+        self.labelFont = labelFont
+        self.maxImageSize = maxImageSize
+    }
+    
+    static func defaultConfiguration() -> ASCIIVideoFrameProviderConfiguration {
+        let configuration = ASCIIVideoFrameProviderConfiguration(UIFont(name: "Menlo", size: 10)!, CGSize(width: 100, height: 100))
+        
+        return configuration
+    }
+}
