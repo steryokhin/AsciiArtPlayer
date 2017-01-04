@@ -6,14 +6,20 @@
 //  Copyright © 2016 iMacDev. All rights reserved.
 //
 
+import ViperMcFlurry
 import QorumLogs
 import Foundation
 
-class PlayerPresenter: PlayerModuleInput, PlayerViewOutput, PlayerInteractorOutput {
+class PlayerPresenter: NSObject, PlayerModuleInput, PlayerViewOutput, PlayerInteractorOutput {
 
     weak var view: PlayerViewInput!
     var interactor: PlayerInteractorInput!
     var router: PlayerRouterInput!
+    
+    var output: PlayerModuleOutput?
+    func setModuleOutput(_ moduleOutput: RamblerViperModuleOutput!) {
+        self.output = moduleOutput as! PlayerModuleOutput?
+    }
     
     var service: VideoFrameProviderServiceProtocol?
 
@@ -21,23 +27,20 @@ class PlayerPresenter: PlayerModuleInput, PlayerViewOutput, PlayerInteractorOutp
     func viewIsReady() {
         QL2("PlayerPresenter: view is ready")
         
-        self.view.setupInitialState()
-        
-        let path = Bundle.main.path(forResource: "1", ofType: "mp4")
-        let url = URL(fileURLWithPath: path!)
-        self.interactor.configure(withURL: url)
+        self.view.setupInitialState()        
     }
     
     /// MARK: PlayerInteractorOutput
     func interactorConfigured(withService service: VideoFrameProviderServiceProtocol) {
+        service.delegate = self
         self.service = service
         
         self.displayFrame(withTime: 0.0)
     }
     
     /// PlayerModuleInput
-    func configure() {
-        //TODO: implement me
+    func configure(withURL url: URL) {
+        self.interactor.configure(withURL: url)
     }
     
     
@@ -48,19 +51,40 @@ class PlayerPresenter: PlayerModuleInput, PlayerViewOutput, PlayerInteractorOutp
         
         print("display frame with time: \(time)")
         
+
+        myService.frameWithTime(time: time)
+    }
+}
+
+extension PlayerPresenter: VideoFrameProviderServiceDelegate {
+    func frameComplete(withString asciiString: String, forTime time: CGFloat) {
         weak var weakSelf = self
-        myService.frameWithTime(time: time) { (asciiText, nextFrameTime) in
-            DispatchQueue.main.async {
-                guard let strongSelf = weakSelf else {
+        DispatchQueue.main.async {
+            if let strongSelf = weakSelf {
+                guard let myService = strongSelf.service else {
+                    return
+                }
+
+                strongSelf.view.displayText(asciiString, font: myService.configuration.labelFont)
+                strongSelf.displayFrame(withTime: time + 0.1)
+            }
+        }
+    }
+
+    func frameFailed(withError error: Error) {
+        weak var weakSelf = self
+        
+        DispatchQueue.main.async {
+            if let strongSelf = weakSelf {
+                guard let myOutput = strongSelf.output else {
                     return
                 }
                 
-                guard let myFont = strongSelf.service?.configuration.labelFont else {
+                guard let myHandler = strongSelf.router.transitionHandler else {
                     return
                 }
                 
-                strongSelf.view.displayText(asciiText, font: myFont)
-                strongSelf.displayFrame(withTime: nextFrameTime)
+                myOutput.cancelPlayer(module: myHandler)
             }
         }
     }

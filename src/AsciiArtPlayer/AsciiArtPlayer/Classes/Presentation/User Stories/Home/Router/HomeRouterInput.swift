@@ -6,8 +6,14 @@
 //  Copyright © 2016 iMacDev. All rights reserved.
 //
 
+import ViperMcFlurry
 import Foundation
 
 protocol HomeRouterInput {
-    func showPlayer()
+    func showPlayer(delegate: RamblerViperModuleOutput?, url: URL)
+    
+    func showAssetLoader(delegate: RamblerViperModuleOutput?)
+    
+    func showCameraRecorder(delegate: RamblerViperModuleOutput?)    
 }
+

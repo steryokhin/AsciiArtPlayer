@@ -15,7 +15,8 @@ class ApplicationAssembly {
 	class var assembler: Assembler {
 		return try! Assembler(assemblies: [ThirdPartyAssembly(),
 		                                   HomeAssemblyContainer(),
-		                                   PlayerAssemblyContainer()])
+		                                   PlayerAssemblyContainer(),
+		                                   AssetLoaderAssemblyContainer()])
 	}
 	
 	var assembler: Assembler

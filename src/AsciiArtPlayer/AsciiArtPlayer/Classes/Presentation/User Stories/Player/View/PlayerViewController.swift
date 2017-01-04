@@ -68,7 +68,8 @@ class PlayerViewController: UIViewController, PlayerViewInput {
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview().offset(-5)
         }
-        node.backgroundColor = UIColor.red
+        
+        node.backgroundColor = UIColor.white
         
         self.displayNode = node
     }

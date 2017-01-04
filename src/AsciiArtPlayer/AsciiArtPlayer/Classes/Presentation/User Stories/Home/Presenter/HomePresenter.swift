@@ -6,9 +6,10 @@
 //  Copyright © 2016 iMacDev. All rights reserved.
 //
 
+import ViperMcFlurry
 import QorumLogs
 
-class HomePresenter: HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
+class HomePresenter: NSObject, HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
 
     weak var view: HomeViewInput!
     var interactor: HomeInteractorInput!
@@ -18,7 +19,33 @@ class HomePresenter: HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
         QL2("Home module is ready")
     }
     
-    func viewShowPlayer() {
-        self.router.showPlayer()
+    func viewShowAssetLoader() {
+        self.router.showAssetLoader(delegate: self)
+    }
+    
+    func viewShowCameraRecorder() {
+        self.router.showCameraRecorder(delegate: self)
+    }
+}
+
+extension HomePresenter : AssetLoaderModuleOutput {
+    func cancelAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol) {
+        module.closeCurrentModule!(true)
+    }
+    
+    func completeAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol, url: URL) {
+        module.closeCurrentModule!(true)
+        
+        self.router.showPlayer(delegate: self, url: url)
+    }
+}
+
+extension HomePresenter: PlayerModuleOutput {
+    func cancelPlayer(module: RamblerViperModuleTransitionHandlerProtocol) {
+        module.closeCurrentModule!(true)
+    }
+    
+    func completePlayer(module: RamblerViperModuleTransitionHandlerProtocol) {
+        module.closeCurrentModule!(true)
     }
 }

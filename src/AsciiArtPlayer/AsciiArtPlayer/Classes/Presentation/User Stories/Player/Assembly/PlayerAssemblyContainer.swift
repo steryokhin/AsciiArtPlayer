@@ -22,7 +22,7 @@ class PlayerAssemblyContainer: AssemblyType, SwinjectAutoloaderProtocol {
 		
 		container.register(PlayerRouter.self) { (r, viewController: PlayerViewController) in
 			let router = PlayerRouter()
-			//router.transitionHandler = viewController
+			router.transitionHandler = viewController
 			
 			return router
 		}

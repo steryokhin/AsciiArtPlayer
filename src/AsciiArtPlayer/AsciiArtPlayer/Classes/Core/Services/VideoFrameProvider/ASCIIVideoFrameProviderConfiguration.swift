@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 /// Configuration class for video frame provider service
-struct ASCIIVideoFrameProviderConfiguration {
+struct VideoFrameProviderConfiguration {
     public let labelFont: UIFont
     public let maxImageSize: CGSize
     public lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
@@ -25,8 +25,8 @@ struct ASCIIVideoFrameProviderConfiguration {
         self.maxImageSize = maxImageSize
     }
     
-    static func defaultConfiguration() -> ASCIIVideoFrameProviderConfiguration {
-        let configuration = ASCIIVideoFrameProviderConfiguration(UIFont(name: "Menlo", size: 10)!, CGSize(width: 100, height: 100))
+    static func defaultConfiguration() -> VideoFrameProviderConfiguration {
+        let configuration = VideoFrameProviderConfiguration(UIFont(name: "Menlo", size: 10)!, CGSize(width: 100, height: 100))
         
         return configuration
     }

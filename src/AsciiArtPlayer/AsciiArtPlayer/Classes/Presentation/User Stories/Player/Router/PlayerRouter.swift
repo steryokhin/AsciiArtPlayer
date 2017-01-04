@@ -6,6 +6,8 @@
 //  Copyright © 2016 iMacDev. All rights reserved.
 //
 
-class PlayerRouter: PlayerRouterInput {
+import ViperMcFlurry
 
+class PlayerRouter: PlayerRouterInput {
+    var transitionHandler: RamblerViperModuleTransitionHandlerProtocol?
 }

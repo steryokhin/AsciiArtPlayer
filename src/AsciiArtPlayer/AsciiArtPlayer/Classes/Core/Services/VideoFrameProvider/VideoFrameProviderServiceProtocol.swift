@@ -9,10 +9,20 @@
 import UIKit
 import Foundation
 
-protocol VideoFrameProviderServiceProtocol {
-    var configuration: ASCIIVideoFrameProviderConfiguration! { get }
+protocol VideoFrameProviderServiceDelegate: class {
+    func frameComplete(withString asciiString: String, forTime time: CGFloat)
     
-    func nextFrame() -> UIImage?
-    func frameWithTime(time: CGFloat, callback: @escaping (_ asciiString: String, _ nextTime: CGFloat) -> Void)
+    func frameFailed(withError error: Error)
+}
+
+
+protocol VideoFrameProviderServiceProtocol: class {
+    //FIXME: remove set?
+    weak var delegate: VideoFrameProviderServiceDelegate? { get set }
+    
+    var configuration: VideoFrameProviderConfiguration! { get }
+    
+    func nextFrame()
+    func frameWithTime(time: CGFloat)
 }
 
