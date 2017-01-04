@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yDT-cz-Mef">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yDT-cz-Mef">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,30 +29,22 @@
         <scene sceneID="vFj-Cg-LrO">
             <objects>
                 <viewController storyboardIdentifier="HomeViewControllerID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dea-Fg-Syf" customClass="HomeViewController" customModule="AsciiArtPlayer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="URo-eU-QoC"/>
-                        <viewControllerLayoutGuide type="bottom" id="2bx-S5-YKL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="624-MJ-67h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vj-2g-8bT">
-                                <rect key="frame" x="174.5" y="308" width="47" height="30"/>
-                                <state key="normal" title="START"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="0Vj-2g-8bT" firstAttribute="centerX" secondItem="624-MJ-67h" secondAttribute="centerX" constant="10.5" id="087-gg-tE3"/>
-                            <constraint firstItem="0Vj-2g-8bT" firstAttribute="centerY" secondItem="624-MJ-67h" secondAttribute="centerY" constant="-10.5" id="CIV-0D-5ke"/>
-                        </constraints>
-                    </view>
                     <navigationItem key="navigationItem" id="nUu-wF-Jto"/>
+                    <connections>
+                        <segue destination="AVz-JZ-CaS" kind="show" identifier="ShowPlayer" id="48D-5T-qfW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8W-WL-BTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-164" y="-35"/>
+            <point key="canvasLocation" x="-82" y="-35"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="YtC-sQ-JEr">
+            <objects>
+                <viewController restorationIdentifier="PlayerViewControllerID" storyboardIdentifier="PlayerViewControllerID" id="AVz-JZ-CaS" customClass="PlayerViewController" customModule="AsciiArtPlayer" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oTC-Ww-Hmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="-36"/>
         </scene>
     </scenes>
 </document>

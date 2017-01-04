@@ -4,14 +4,19 @@ swift_version = '3.0'
 
 target 'AsciiArtPlayer' do
     pod 'SnapKit', '3.0.2'                               # layout
-    pod 'Watchdog', '3.0'                              # log blocking ui thread
-    pod 'QorumLogs', '0.9'                             # logger TODO: replace with other framework
-    pod 'AsyncDisplayKit', '1.9.92'                       # faster alternative to UIKit
-    pod 'ReachabilitySwift'                     # apple reachability rewriten in swift
+    pod 'Watchdog', '3.0'                                # log blocking ui thread
+    pod 'QorumLogs', '0.9'                               # logger TODO: replace with other framework
+    pod 'AsyncDisplayKit', '1.9.92'                      # faster alternative to UIKit
+    pod 'ReachabilitySwift'                              # apple reachability rewriten in swift
     pod 'PromiseKit', '4.0.4'                            # js style promises
     pod 'Bolts-Swift', '1.3.0'                           #
     pod 'PermissionScope', '1.1.1'                       # new way for permissions
     pod 'R.swift', '3.1.0'                               # Resource management
+    pod 'SwiftyAttributes', '2.0'                        # easy usage of attributed strings
+
+    #######################
+    ## UI
+    #pod 'CTAssetsPickerController',  '~> 3.3.0'
 
     ##### Utility
     pod 'SwiftyUtils', '0.5.0'                           # utility methods
@@ -21,6 +26,9 @@ target 'AsciiArtPlayer' do
     pod 'ViperMcFlurry', '1.5.2'
     pod 'Swinject', '2.0.0-beta.2'
     pod 'SwinjectStoryboard', '1.0.0-beta.2'
+
+    #### Debugging
+    #pod 'Reveal-SDK', :configurations => ['Debug']
 
 #pod 'swift-ascii-art', :git => 'https://github.com/steryokhin/swift-ascii-art'
 end

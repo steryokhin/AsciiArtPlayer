@@ -14,4 +14,8 @@ protocol HomeViewOutput {
     */
 
     func viewIsReady()
+    
+    func viewShowAssetLoader()
+    
+    func viewShowCameraRecorder()
 }

@@ -22,4 +22,12 @@ class HomeViewController: UIViewController, HomeViewInput {
 	// MARK: HomeViewInput
 	func setupInitialState() {
 	}
+    
+    @IBAction func didTouchAssetLoader() {
+        self.output.viewShowAssetLoader()
+    }
+    
+    @IBAction func didTouchCameraRecorder() {
+        self.output.viewShowCameraRecorder()
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,15 +19,27 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OE-6J-nRY">
-                    <rect key="frame" x="164" y="318" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obt-b1-dfv" userLabel="Select">
+                    <rect key="frame" x="142" y="356" width="90" height="30"/>
+                    <state key="normal" title="Asset Loader"/>
+                    <connections>
+                        <action selector="didTouchAssetLoader" destination="-1" eventType="touchUpInside" id="4aW-Nx-K69"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpi-E9-Flx" userLabel="Camera">
+                    <rect key="frame" x="162.5" y="394" width="49" height="30"/>
+                    <state key="normal" title="Record"/>
+                    <connections>
+                        <action selector="didTouchCameraRecorder" destination="-1" eventType="touchUpInside" id="nlH-an-0jQ"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="8OE-6J-nRY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5B5-5R-9YX"/>
-                <constraint firstItem="8OE-6J-nRY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="det-oQ-BFe"/>
+                <constraint firstItem="Rpi-E9-Flx" firstAttribute="top" secondItem="obt-b1-dfv" secondAttribute="bottom" constant="8" id="7yr-Qt-MBC"/>
+                <constraint firstItem="Rpi-E9-Flx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XVL-XU-xhA"/>
+                <constraint firstItem="obt-b1-dfv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="crZ-GW-uxm"/>
+                <constraint firstItem="obt-b1-dfv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="37.5" id="p2w-lt-3Ch"/>
             </constraints>
         </view>
     </objects>
