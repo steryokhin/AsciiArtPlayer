@@ -8,9 +8,10 @@
 
 import ViperMcFlurry
 import Foundation
+import AVFoundation
 
 protocol AssetLoaderModuleOutput : class, RamblerViperModuleOutput {
     func cancelAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol)
     
-    func completeAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol, url: URL)
+    func completeAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol, avAsset: AVAsset)
 }

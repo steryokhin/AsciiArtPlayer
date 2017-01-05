@@ -30,10 +30,10 @@ class ASCIIVideoFrameProviderService: VideoFrameProviderServiceProtocol {
         fatalError()
     }
 
-    init(assetURL: URL, configuration: VideoFrameProviderConfiguration = VideoFrameProviderConfiguration.defaultConfiguration()) {
-        self.asset = AVAsset(url: assetURL)
+    init(avAsset: AVAsset, configuration: VideoFrameProviderConfiguration = VideoFrameProviderConfiguration.defaultConfiguration()) {
+        self.asset = avAsset
         self.configuration = configuration
-
+        
         let assetImgGenerate: AVAssetImageGenerator = AVAssetImageGenerator(asset: self.asset)
         assetImgGenerate.appliesPreferredTrackTransform = true
         assetImgGenerate.requestedTimeToleranceAfter = kCMTimeZero;
@@ -41,7 +41,7 @@ class ASCIIVideoFrameProviderService: VideoFrameProviderServiceProtocol {
 
         self.generator = assetImgGenerate
     }
-
+    
     func nextFrame() {
         //TODO: implement me
     }

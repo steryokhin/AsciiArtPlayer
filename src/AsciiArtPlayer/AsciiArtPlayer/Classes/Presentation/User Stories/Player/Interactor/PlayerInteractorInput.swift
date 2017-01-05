@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import AVFoundation
 
 protocol PlayerInteractorInput {
-    func configure(withURL url: URL)
+    func configure(withAVAsset avAsset: AVAsset)
 }

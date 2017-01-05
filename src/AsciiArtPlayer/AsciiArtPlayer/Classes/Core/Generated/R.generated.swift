@@ -21,17 +21,8 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 0 files.
   struct file {
-    /// Resource file `1.mp4`.
-    static let mp4 = Rswift.FileResource(bundle: R.hostingBundle, name: "1", pathExtension: "mp4")
-    
-    /// `bundle.url(forResource: "1", withExtension: "mp4")`
-    static func mp4(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.mp4
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-    
     fileprivate init() {}
   }
   

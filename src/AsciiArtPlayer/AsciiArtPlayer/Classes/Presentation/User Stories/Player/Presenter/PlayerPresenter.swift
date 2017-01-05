@@ -9,6 +9,7 @@
 import ViperMcFlurry
 import QorumLogs
 import Foundation
+import AVFoundation
 
 class PlayerPresenter: NSObject, PlayerModuleInput, PlayerViewOutput, PlayerInteractorOutput {
 
@@ -39,8 +40,8 @@ class PlayerPresenter: NSObject, PlayerModuleInput, PlayerViewOutput, PlayerInte
     }
     
     /// PlayerModuleInput
-    func configure(withURL url: URL) {
-        self.interactor.configure(withURL: url)
+    func configure(withAVAsset avAsset: AVAsset) {
+        self.interactor.configure(withAVAsset: avAsset)
     }
     
     

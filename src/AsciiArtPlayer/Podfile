@@ -17,6 +17,7 @@ target 'AsciiArtPlayer' do
     #######################
     ## UI
     #pod 'CTAssetsPickerController',  '~> 3.3.0'
+    pod 'DKImagePickerController'                                    # Replace UIImagePickerController
 
     ##### Utility
     pod 'SwiftyUtils', '0.5.0'                           # utility methods
