@@ -10,6 +10,7 @@ import QorumLogs
 import Swinject
 import UIKit
 import ViperMcFlurry
+import AVFoundation
 
 class HomeRouter: NSObject, HomeRouterInput {
     fileprivate let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -25,7 +26,7 @@ class HomeRouter: NSObject, HomeRouterInput {
         return factory!
     }
     
-    func showPlayer(delegate: RamblerViperModuleOutput?, url: URL) {
+    func showPlayer(delegate: RamblerViperModuleOutput?, avAsset: AVAsset) {
         self.transitionHandler.openModule!(usingFactory: moduleFactory) { sourceModuleTransitionHandler, destinationModuleTransitionHandler in
             let sourceVC = sourceModuleTransitionHandler as! UIViewController
             let destinationVC = destinationModuleTransitionHandler as! UIViewController
@@ -36,7 +37,7 @@ class HomeRouter: NSObject, HomeRouterInput {
                     fatalError("invalid module type")
                 }
                 
-                myModuleInput.configure(withURL: url)
+                myModuleInput.configure(withAVAsset: avAsset)
                 
                 return delegate
         }

@@ -6,10 +6,11 @@
 //  Copyright © 2017 iMacDev. All rights reserved.
 //
 
+import DKImagePickerController
 import UIKit
 import Foundation
 
 /// We need this class to specify loading of this concrete class instead of any image picker
-class AssetLoaderViewController: UIImagePickerController {
+class AssetLoaderViewController: DKImagePickerController {
     
 }

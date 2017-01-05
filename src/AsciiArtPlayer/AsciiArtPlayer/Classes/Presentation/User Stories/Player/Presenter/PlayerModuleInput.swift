@@ -6,8 +6,9 @@
 //  Copyright © 2016 iMacDev. All rights reserved.
 //
 
+import AVFoundation
 import ViperMcFlurry
 
 protocol PlayerModuleInput: class, RamblerViperModuleInput {
-    func configure(withURL url: URL)
+    func configure(withAVAsset avAsset: AVAsset)
 }

@@ -8,6 +8,7 @@
 
 import ViperMcFlurry
 import QorumLogs
+import AVFoundation
 
 class HomePresenter: NSObject, HomeModuleInput, HomeViewOutput, HomeInteractorOutput {
 
@@ -33,10 +34,10 @@ extension HomePresenter : AssetLoaderModuleOutput {
         module.closeCurrentModule!(true)
     }
     
-    func completeAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol, url: URL) {
+    func completeAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol, avAsset: AVAsset) {
         module.closeCurrentModule!(true)
         
-        self.router.showPlayer(delegate: self, url: url)
+        self.router.showPlayer(delegate: self, avAsset: avAsset)
     }
 }
 

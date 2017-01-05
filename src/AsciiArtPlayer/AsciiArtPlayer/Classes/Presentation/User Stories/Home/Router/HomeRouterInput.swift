@@ -8,9 +8,10 @@
 
 import ViperMcFlurry
 import Foundation
+import AVFoundation
 
 protocol HomeRouterInput {
-    func showPlayer(delegate: RamblerViperModuleOutput?, url: URL)
+    func showPlayer(delegate: RamblerViperModuleOutput?, avAsset: AVAsset)
     
     func showAssetLoader(delegate: RamblerViperModuleOutput?)
     

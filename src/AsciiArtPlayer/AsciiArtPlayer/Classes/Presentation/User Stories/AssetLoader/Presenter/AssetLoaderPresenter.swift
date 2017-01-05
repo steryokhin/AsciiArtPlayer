@@ -6,15 +6,17 @@
 //  Copyright © 2016 iMacDev. All rights reserved.
 //
 
+import DKImagePickerController
 import ViperMcFlurry
 import QorumLogs
 import MobileCoreServices
+import AVFoundation
 
 @objc class AssetLoaderPresenter: NSObject, AssetLoaderModuleInput, AssetLoaderInteractorOutput {
     var interactor: AssetLoaderInteractorInput!
     var router: AssetLoaderRouterInput!
 
-    var picker: UIImagePickerController!
+    var picker: DKImagePickerController!
     
     var moduleOutput: AssetLoaderModuleOutput?    
     func setModuleOutput(_ moduleOutput: RamblerViperModuleOutput!) {
@@ -22,25 +24,47 @@ import MobileCoreServices
     }
 
     func configureVideoPicker() {
-        self.picker.delegate = self;
-        self.picker.sourceType = .photoLibrary
-        self.picker.mediaTypes = [kUTTypeMovie as String]
+        self.picker.allowMultipleTypes = false
+        self.picker.assetType = .allVideos
+        
+        self.picker.didSelectAssets = { (assets: [DKAsset]) in
+            let dkAsset = assets.first
+            
+            guard let myModuleOutput = self.moduleOutput else {
+                return
+            }
+            
+            guard let myAsset = dkAsset else {
+                myModuleOutput.cancelAssetLoader(module: self.router.transitionHandler)
+                return
+            }
+            
+            myAsset.fetchAVAssetWithCompleteBlock({ (asset, info) in
+                
+                DispatchQueue.main.async {
+                    guard let myAsset = asset else {
+                        myModuleOutput.cancelAssetLoader(module: self.router.transitionHandler)
+                        return
+                    }
+                    
+                    myModuleOutput.completeAssetLoader(module: self.router.transitionHandler, avAsset: myAsset)
+                }
+                
+            })
+        }
     }
     
     func configureImagePicker() {
-        self.picker.delegate = self;
-        self.picker.sourceType = .photoLibrary
     }
     
     func configureAllMediaPicker() {
-        self.picker.delegate = self;
-        self.picker.sourceType = .photoLibrary
     }
     
     func run() {
         
         QL2("RUN")
     }
+    
 }
 
 extension AssetLoaderPresenter: UIImagePickerControllerDelegate {
@@ -61,7 +85,7 @@ extension AssetLoaderPresenter: UIImagePickerControllerDelegate {
         }
 
         let url = info[UIImagePickerControllerReferenceURL] as! URL
-        myModuleOutput.completeAssetLoader(module: self.router.transitionHandler, url: url)
+        myModuleOutput.completeAssetLoader(module: self.router.transitionHandler, avAsset: AVAsset(url: url))
     }
 }
 
