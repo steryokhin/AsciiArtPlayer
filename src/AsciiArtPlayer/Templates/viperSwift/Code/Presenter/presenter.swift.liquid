@@ -6,11 +6,19 @@
 //  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
 //
 
+import ViperMcFlurry
+
 class {{ module_info.name }}Presenter: {{ module_info.name }}ModuleInput, {{ module_info.name }}ViewOutput, {{ module_info.name }}InteractorOutput {
 
     weak var view: {{ module_info.name }}ViewInput!
     var interactor: {{ module_info.name }}InteractorInput!
     var router: {{ module_info.name }}RouterInput!
+
+    /// Support for output module protocol
+    var output: {{ module_info.name }}ModuleOutput?
+    func setModuleOutput(_ moduleOutput: RamblerViperModuleOutput!) {
+        self.output = moduleOutput as! {{ module_info.name }}ModuleOutput?
+    }
 
     func viewIsReady() {
 
