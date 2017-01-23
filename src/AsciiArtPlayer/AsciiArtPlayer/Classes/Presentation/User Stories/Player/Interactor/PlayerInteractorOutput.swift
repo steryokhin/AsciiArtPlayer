@@ -9,5 +9,8 @@
 import Foundation
 
 protocol PlayerInteractorOutput: class {
-    func interactorConfigured(withService service: VideoFrameProviderServiceProtocol)
+    func interactorConfigured(withFrameService frameService: VideoFrameProviderServiceProtocol,
+                              withAudioService audioService: VideoAudioPlayerServiceProtocol)
+
+    func interactorFailed()
 }

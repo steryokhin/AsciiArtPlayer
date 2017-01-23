@@ -12,17 +12,21 @@ import Foundation
 import AVFoundation
 
 class PlayerPresenter: NSObject, PlayerModuleInput, PlayerViewOutput, PlayerInteractorOutput {
-
+    /// link to our view
     weak var view: PlayerViewInput!
     var interactor: PlayerInteractorInput!
     var router: PlayerRouterInput!
-    
+
+    /// Output module support (if required)
     var output: PlayerModuleOutput?
     func setModuleOutput(_ moduleOutput: RamblerViperModuleOutput!) {
         self.output = moduleOutput as! PlayerModuleOutput?
     }
-    
-    var service: VideoFrameProviderServiceProtocol?
+
+    /// service to provide frames
+    var frameService: VideoFrameProviderServiceProtocol?
+    /// service which play audio for corresponing video
+    var audioService: VideoAudioPlayerServiceProtocol?
 
     ///MARK : PlayerViewOutput
     func viewIsReady() {
@@ -32,13 +36,37 @@ class PlayerPresenter: NSObject, PlayerModuleInput, PlayerViewOutput, PlayerInte
     }
     
     /// MARK: PlayerInteractorOutput
-    func interactorConfigured(withService service: VideoFrameProviderServiceProtocol) {
-        service.delegate = self
-        self.service = service
+    func interactorConfigured(withFrameService frameService: VideoFrameProviderServiceProtocol,
+                              withAudioService audioService: VideoAudioPlayerServiceProtocol) {
+        frameService.delegate = self
+        self.frameService = frameService
+
+        audioService.delegate = self
+        audioService.play()
+        self.audioService = audioService
         
-        self.displayFrame(withTime: 0.0)
+        self.displayFrame(withTime: CGFloat(audioService.currentTime()))
     }
-    
+
+    func interactorFailed() {
+        //TODO: show popup + back
+    }
+
+    func cancelAction() {
+        self.audioService = nil
+        self.frameService = nil
+        
+        guard let myOutput = self.output else {
+            return
+        }
+
+        guard let myHandler = self.router.transitionHandler else {
+            return
+        }
+
+        myOutput.cancelPlayer(module: myHandler)
+    }
+
     /// PlayerModuleInput
     func configure(withAVAsset avAsset: AVAsset) {
         self.interactor.configure(withAVAsset: avAsset)
@@ -46,14 +74,12 @@ class PlayerPresenter: NSObject, PlayerModuleInput, PlayerViewOutput, PlayerInte
     
     
     func displayFrame(withTime time: CGFloat) {
-        guard let myService = self.service else {
+        guard let myService = self.frameService else {
             return
         }
-        
-        print("display frame with time: \(time)")
-        
 
         myService.frameWithTime(time: time)
+        print("display frame with time: \(time)")
     }
 }
 
@@ -62,12 +88,18 @@ extension PlayerPresenter: VideoFrameProviderServiceDelegate {
         weak var weakSelf = self
         DispatchQueue.main.async {
             if let strongSelf = weakSelf {
-                guard let myService = strongSelf.service else {
+                guard let myService = strongSelf.frameService else {
+                    return
+                }
+
+                guard let myAudioService = strongSelf.audioService else {
                     return
                 }
 
                 strongSelf.view.displayText(asciiString, font: myService.configuration.labelFont)
-                strongSelf.displayFrame(withTime: time + 0.1)
+
+                self.displayFrame(withTime: CGFloat(myAudioService .currentTime()))
+                //strongSelf.displayFrame(withTime: time + 0.1)
             }
         }
     }
@@ -88,5 +120,15 @@ extension PlayerPresenter: VideoFrameProviderServiceDelegate {
                 myOutput.cancelPlayer(module: myHandler)
             }
         }
+    }
+
+
+}
+
+extension PlayerPresenter: VideoAudioPlayerDelegateProtocol {
+    func didFinish(withService: VideoAudioPlayerService, result: Bool) {
+        QL3("VIDEO FINISHED")
+        
+        self.cancelAction()
     }
 }
