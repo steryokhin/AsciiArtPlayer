@@ -71,6 +71,8 @@
 		D0F0EEE121CFFE23517AC265 /* PlayerViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CD0D9B2C2A43ED577EFF83 /* PlayerViewInput.swift */; };
 		D54B146CEDA11FB41A0D0B90 /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACB5E0D63ADB24801489519 /* PlayerInteractor.swift */; };
 		DA37EA13FEF66D1232E2F10C /* AssetLoaderPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DF9088122081CA0178B1DE /* AssetLoaderPresenterTests.swift */; };
+		DA5048CB1BB9331C04967C59 /* VideoAudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58034E323163E8360F37B1 /* VideoAudioPlayerService.swift */; };
+		DA51E10BD56AF0C44E943D96 /* VideoAudioPlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA533DAB9DA630547A0FB254 /* VideoAudioPlayerProtocol.swift */; };
 		DAA07A5CCA13AF7C22E3A457 /* AssetLoaderContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F44A01445F249DDCAC66EC6 /* AssetLoaderContainerTests.swift */; };
 		DB21A84338E6472F96BF0E6C /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17980ABAB0F8F900D83BE9B9 /* HomeInteractorTests.swift */; };
 		E4F24902F562B9DC851B22EA /* PlayerRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED43008455542B1FABDC2A0 /* PlayerRouterTests.swift */; };
@@ -174,6 +176,8 @@
 		C1BA4234E6958CE814A17449 /* AssetLoaderInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetLoaderInteractorInput.swift; sourceTree = "<group>"; };
 		C50C3A80698B760F23D202F5 /* HomeAssemblyContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeAssemblyContainer.swift; sourceTree = "<group>"; };
 		D6FF4220C6DB85DBB0052FFF /* HomeViewTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
+		DA533DAB9DA630547A0FB254 /* VideoAudioPlayerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAudioPlayerProtocol.swift; sourceTree = "<group>"; };
+		DA58034E323163E8360F37B1 /* VideoAudioPlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAudioPlayerService.swift; sourceTree = "<group>"; };
 		DB4DCEDA2FD0826A2C30D083 /* HomeViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeViewOutput.swift; sourceTree = "<group>"; };
 		DEFA3B4FBB3522F588425554 /* Pods_AsciiArtPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AsciiArtPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF9C35E443A9E45359C43626 /* AssetLoaderInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetLoaderInteractor.swift; sourceTree = "<group>"; };
@@ -434,6 +438,7 @@
 			children = (
 				2EAECA631E08D1C000629BB8 /* VideoFrameProvider */,
 				2E6BEE021E089D4900348B5E /* 3rd Party */,
+				DA5CDCCF52A8E663ADE4E785 /* VideoAudioPlayer */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -797,6 +802,15 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		DA5CDCCF52A8E663ADE4E785 /* VideoAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				DA533DAB9DA630547A0FB254 /* VideoAudioPlayerProtocol.swift */,
+				DA58034E323163E8360F37B1 /* VideoAudioPlayerService.swift */,
+			);
+			path = VideoAudioPlayer;
+			sourceTree = "<group>";
+		};
 		E5B6660193863A33F712AF10 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1115,6 +1129,8 @@
 				70873A24D7DD883BC4F6656D /* AssetLoaderInteractor.swift in Sources */,
 				29077F33FBC2C36885AD9A0B /* AssetLoaderRouterInput.swift in Sources */,
 				01EE294EC32BAAAD42426766 /* AssetLoaderRouter.swift in Sources */,
+				DA51E10BD56AF0C44E943D96 /* VideoAudioPlayerProtocol.swift in Sources */,
+				DA5048CB1BB9331C04967C59 /* VideoAudioPlayerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

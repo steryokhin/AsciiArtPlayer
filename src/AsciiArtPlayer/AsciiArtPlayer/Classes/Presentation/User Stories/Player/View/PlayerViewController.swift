@@ -27,9 +27,6 @@ class PlayerViewController: UIViewController, PlayerViewInput {
             self.displayNode?.view.frame.size = CGSize(width: myString.size().width + 2.0,
                                                        height: myString.size().height + 2.0)
             self.updateMinZoomScaleForSize(size: self.view.bounds.size)
-            
-            //self.displayNode?.view.frame.origin = CGPoint.zero
-            
         }
     }
     
@@ -38,21 +35,21 @@ class PlayerViewController: UIViewController, PlayerViewInput {
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
 		output.viewIsReady()
 	}
 	
 	
 	// MARK: PlayerViewInput
 	func setupInitialState() {
-        self.setupUI()
-        
+        self.setupUI()        
 	}
     
 
     //MARK: UI
     func setupUI() {
         let node = ASTextNode()
-        let myAttributedString = NSAttributedString(string: "Test String")
+        let myAttributedString = NSAttributedString(string: "")
         
         node.attributedText = myAttributedString
         node.isUserInteractionEnabled = true
@@ -72,12 +69,15 @@ class PlayerViewController: UIViewController, PlayerViewInput {
         node.backgroundColor = UIColor.white
         
         self.displayNode = node
+
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(title: "My Back", style: .plain, target: self, action: #selector(backAction))
+        self.navigationItem.leftBarButtonItem = backButton
     }
     
     func displayText(_ text: String, font: UIFont) {
         let string = NSAttributedString(string: text)
         self.asciiArtString = string.withFont(font)
-        
     }
     
     private func updateMinZoomScaleForSize(size: CGSize) {
@@ -92,6 +92,11 @@ class PlayerViewController: UIViewController, PlayerViewInput {
         scrollView.minimumZoomScale = minScale
         scrollView.maximumZoomScale = minScale*10
         scrollView.zoomScale = minScale
+    }
+
+    ///MARK: Action
+    func backAction() {
+        self.output.cancelAction()
     }
 }
 

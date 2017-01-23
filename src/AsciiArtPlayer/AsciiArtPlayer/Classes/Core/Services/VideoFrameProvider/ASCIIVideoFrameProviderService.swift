@@ -42,6 +42,10 @@ class ASCIIVideoFrameProviderService: VideoFrameProviderServiceProtocol {
         self.generator = assetImgGenerate
     }
     
+    deinit {
+        QL2("DEINIT")     
+    }
+    
     func nextFrame() {
         //TODO: implement me
     }
