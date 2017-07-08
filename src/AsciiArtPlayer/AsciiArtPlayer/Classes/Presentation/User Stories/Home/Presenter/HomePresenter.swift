@@ -35,8 +35,6 @@ extension HomePresenter : AssetLoaderModuleOutput {
     }
     
     func completeAssetLoader(module: RamblerViperModuleTransitionHandlerProtocol, avAsset: AVAsset) {
-        module.closeCurrentModule!(true)
-        
         self.router.showPlayer(delegate: self, avAsset: avAsset)
     }
 }
