@@ -9,8 +9,8 @@
 import DKImagePickerController
 import UIKit
 import Foundation
+import QorumLogs
 
 /// We need this class to specify loading of this concrete class instead of any image picker
 class AssetLoaderViewController: DKImagePickerController {
-    
 }

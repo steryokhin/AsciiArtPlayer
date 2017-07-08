@@ -13,16 +13,16 @@ import Foundation
 
 class ApplicationAssembly {
 	class var assembler: Assembler {
-		return try! Assembler(assemblies: [ThirdPartyAssembly(),
-		                                   HomeAssemblyContainer(),
-		                                   PlayerAssemblyContainer(),
-		                                   AssetLoaderAssemblyContainer()])
+        return try! Assembler(assemblies: [ThirdPartyAssembly(),
+                          HomeAssemblyContainer(),
+                          PlayerAssemblyContainer(),
+                          AssetLoaderAssemblyContainer()])
 	}
 	
 	var assembler: Assembler
 	
 	init(with assemblies: [AssemblyType]) {
-		assembler = try! Assembler(assemblies: assemblies)
+        assembler = try! Assembler(assemblies: assemblies)
 	}
 }
 

@@ -22,7 +22,7 @@ class PlayerViewController: UIViewController, PlayerViewInput {
                 return
             }
             
-            self.displayNode?.attributedString = myString
+            self.displayNode?.attributedText = myString
             
             self.displayNode?.view.frame.size = CGSize(width: myString.size().width + 2.0,
                                                        height: myString.size().height + 2.0)

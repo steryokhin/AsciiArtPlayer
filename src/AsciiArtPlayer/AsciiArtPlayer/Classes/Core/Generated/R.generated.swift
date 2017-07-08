@@ -10,7 +10,7 @@ import UIKit
 /// This `R` struct is generated and contains references to static resources.
 struct R: Rswift.Validatable {
   fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(identifier: "imacdev.AsciiArtPlayer") ?? Bundle.main
+  fileprivate static let hostingBundle = Bundle(for: R.Class.self)
   
   static func validate() throws {
     try intern.validate()
@@ -113,6 +113,8 @@ struct R: Rswift.Validatable {
     
     fileprivate init() {}
   }
+  
+  fileprivate class Class {}
   
   fileprivate init() {}
 }

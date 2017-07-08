@@ -27,6 +27,9 @@ open class DKAsset: NSObject {
 	/// When the asset was an image, it's false. Otherwise true.
 	open private(set) var isVideo: Bool = false
 	
+    /// Returns location, if its contained in original asser
+    open private(set) var location: CLLocation?
+    
 	/// play time duration(seconds) of a video.
 	open private(set) var duration: Double?
 	
@@ -36,6 +39,7 @@ open class DKAsset: NSObject {
 		
 	public init(originalAsset: PHAsset) {
         self.localIdentifier = originalAsset.localIdentifier
+        self.location = originalAsset.location
 		super.init()
 		
 		self.originalAsset = originalAsset
@@ -132,6 +136,22 @@ open class DKAsset: NSObject {
 			completeBlock(image, info)
 		})
 	}
+    
+    /**
+     Fetch an image data with the original size.
+     
+     - parameter sync:          If true, the method blocks the calling thread until image is ready or an error occurs.
+     - parameter completeBlock: The block is executed when the image download is complete.
+     */
+    public func fetchImageDataForAsset(_ sync: Bool, completeBlock: @escaping (_ imageData: Data?, _ info: [AnyHashable: Any]?) -> Void) {
+        let options = PHImageRequestOptions()
+        options.version = .current
+        options.isSynchronous = sync
+        
+        getImageManager().fetchImageDataForAsset(self, options: options, completeBlock: { (data, info) in
+            completeBlock(data, info)
+        })
+    }
 	
     /**
      Fetch an AVAsset with a completeBlock.
@@ -203,22 +223,21 @@ public extension DKAsset {
      */
 	public func writeAVToFile(_ path: String, presetName: String, completeBlock: @escaping (_ success: Bool) -> Void) {
 		self.fetchAVAsset(nil) { (avAsset, _) in
-			DKAssetWriter.writeQueue.addOperation({
+            DKAssetWriter.writeQueue.addOperation({
                 if let avAsset = avAsset,
-                    let exportSession = AVAssetExportSession(asset: avAsset, presetName: presetName)
-                {
-					exportSession.outputFileType = AVFileTypeQuickTimeMovie
-					exportSession.outputURL = URL(fileURLWithPath: path)
-					exportSession.shouldOptimizeForNetworkUse = true
-					exportSession.exportAsynchronously(completionHandler: {
-						completeBlock(exportSession.status == .completed ? true : false)
-					})
-				} else {
-					completeBlock(false)
-				}
-			})
-		}
-	}
+                    let exportSession = AVAssetExportSession(asset: avAsset, presetName: presetName) {
+                    exportSession.outputFileType = AVFileTypeQuickTimeMovie
+                    exportSession.outputURL = URL(fileURLWithPath: path)
+                    exportSession.shouldOptimizeForNetworkUse = true
+                    exportSession.exportAsynchronously(completionHandler: {
+                        completeBlock(exportSession.status == .completed ? true : false)
+                    })
+                } else {
+                    completeBlock(false)
+                }
+            })
+        }
+    }
 }
 
 public extension AVAsset {

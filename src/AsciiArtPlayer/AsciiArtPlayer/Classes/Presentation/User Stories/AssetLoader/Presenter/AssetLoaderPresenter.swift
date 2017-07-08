@@ -16,7 +16,7 @@ import AVFoundation
     var interactor: AssetLoaderInteractorInput!
     var router: AssetLoaderRouterInput!
 
-    var picker: DKImagePickerController!
+    var picker: AssetLoaderViewController!
     
     var moduleOutput: AssetLoaderModuleOutput?    
     func setModuleOutput(_ moduleOutput: RamblerViperModuleOutput!) {
@@ -39,8 +39,7 @@ import AVFoundation
                 return
             }
             
-            myAsset.fetchAVAssetWithCompleteBlock({ (asset, info) in
-                
+            myAsset.fetchAVAssetWithCompleteBlock({ (asset, info) in                
                 DispatchQueue.main.async {
                     guard let myAsset = asset else {
                         myModuleOutput.cancelAssetLoader(module: self.router.transitionHandler)
@@ -49,7 +48,6 @@ import AVFoundation
                     
                     myModuleOutput.completeAssetLoader(module: self.router.transitionHandler, avAsset: myAsset)
                 }
-                
             })
         }
     }

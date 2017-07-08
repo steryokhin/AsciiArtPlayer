@@ -3,30 +3,33 @@ use_frameworks!
 swift_version = '3.0'
 
 target 'AsciiArtPlayer' do
-    pod 'SnapKit', '3.0.2'                               # layout
+    pod 'SnapKit', '3.2.0'                               # layout
     pod 'Watchdog', '3.0'                                # log blocking ui thread
     pod 'QorumLogs', '0.9'                               # logger TODO: replace with other framework
-    pod 'AsyncDisplayKit', '1.9.92'                      # faster alternative to UIKit
-    pod 'ReachabilitySwift'                              # apple reachability rewriten in swift
-    pod 'PromiseKit', '4.0.4'                            # js style promises
+    pod 'AsyncDisplayKit', '2.2.1'                       # faster alternative to UIKit
+    pod 'ReachabilitySwift', '3'                              # apple reachability rewriten in swift
+    pod 'PromiseKit', '4.2.2'                            # js style promises
     pod 'Bolts-Swift', '1.3.0'                           #
     pod 'PermissionScope', '1.1.1'                       # new way for permissions
-    pod 'R.swift', '3.1.0'                               # Resource management
-    pod 'SwiftyAttributes', '2.0'                        # easy usage of attributed strings
+    pod 'R.swift', '3.3.0'                               # Resource management
+    pod 'SwiftyAttributes', '3.1'                        # easy usage of attributed strings
 
     #######################
     ## UI
     #pod 'CTAssetsPickerController',  '~> 3.3.0'
-    pod 'DKImagePickerController'                                    # Replace UIImagePickerController
+    pod 'DKImagePickerController', '3.5.7'                                   # Replace UIImagePickerController
 
     ##### Utility
-    pod 'SwiftyUtils', '0.5.0'                           # utility methods
-    pod 'Sugar', '3.0.0'                                 # usefull extensions
+    pod 'SwiftyUtils', '1.0.0'                           # utility methods
+    pod 'Sugar', '3.1.2'                                 # usefull extensions
 
     #### generamba dependencies and injection tools
-    pod 'ViperMcFlurry', '1.5.2'
+    pod 'ViperMcFlurry'#, '1.5.2'
+#    pod 'Swinject', '2.1.0'#'2.0.0-beta.2'
+#    pod 'SwinjectStoryboard', '1.1.1'#, '1.0.0-beta.2'
     pod 'Swinject', '2.0.0-beta.2'
     pod 'SwinjectStoryboard', '1.0.0-beta.2'
+
 
     #### Debugging
     #pod 'Reveal-SDK', :configurations => ['Debug']

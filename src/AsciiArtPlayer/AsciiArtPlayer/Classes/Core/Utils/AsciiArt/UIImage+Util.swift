@@ -95,7 +95,7 @@ extension UIImage
                 // Rotate the image upright.
                 let
                 degrees = self.degreesToRotate(),
-                radians = degrees * M_PI / 180.0
+                radians = degrees * .pi / 180.0
                 context.rotate(by: CGFloat(radians))
                 
                 // Flip the image on the Y axis.
