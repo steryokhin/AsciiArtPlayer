@@ -26,6 +26,9 @@ import AVFoundation
     func configureVideoPicker() {
         self.picker.allowMultipleTypes = false
         self.picker.assetType = .allVideos
+        self.picker.showsCancelButton = true
+        self.picker.singleSelect = true
+        self.picker.autoCloseOnSingleSelect = true
         
         self.picker.didSelectAssets = { (assets: [DKAsset]) in
             let dkAsset = assets.first
@@ -59,7 +62,6 @@ import AVFoundation
     }
     
     func run() {
-        
         QL2("RUN")
     }
     

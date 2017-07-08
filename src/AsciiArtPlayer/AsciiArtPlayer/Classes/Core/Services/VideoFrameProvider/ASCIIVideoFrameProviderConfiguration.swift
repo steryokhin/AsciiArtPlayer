@@ -26,7 +26,7 @@ struct VideoFrameProviderConfiguration {
     }
     
     static func defaultConfiguration() -> VideoFrameProviderConfiguration {
-        let configuration = VideoFrameProviderConfiguration(UIFont(name: "Menlo", size: 10)!, CGSize(width: 100, height: 100))
+        let configuration = VideoFrameProviderConfiguration(UIFont(name: "Courier", size: 8)!, CGSize(width: 200, height: 200))
         
         return configuration
     }
