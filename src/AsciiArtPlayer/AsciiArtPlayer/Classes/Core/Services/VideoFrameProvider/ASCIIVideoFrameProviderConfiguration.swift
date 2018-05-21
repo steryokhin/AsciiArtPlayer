@@ -13,7 +13,7 @@ import Foundation
 struct VideoFrameProviderConfiguration {
     public let labelFont: UIFont
     public let maxImageSize: CGSize
-    public lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
+    let palette: AsciiPalette!
     
     @available(*, unavailable, message: "Use designated initialiser")
     init() {
@@ -22,7 +22,9 @@ struct VideoFrameProviderConfiguration {
     
     init(_ labelFont: UIFont, _ maxImageSize: CGSize) {
         self.labelFont = labelFont
-        self.maxImageSize = maxImageSize
+        //self.palette = AsciiPalette(font: self.labelFont, symbols: ["0", "1"])
+        self.palette = AsciiPalette(font: self.labelFont)
+        self.maxImageSize = CGSize(width: maxImageSize.width, height: maxImageSize.width/palette.symbolRatio)
     }
     
     static func defaultConfiguration() -> VideoFrameProviderConfiguration {

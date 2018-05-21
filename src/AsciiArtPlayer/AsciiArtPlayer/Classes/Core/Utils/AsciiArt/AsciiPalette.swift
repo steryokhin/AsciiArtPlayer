@@ -14,14 +14,33 @@ class AsciiPalette
 {
     fileprivate let font: UIFont
     
-    init(font: UIFont) { self.font = font }
+    init(font: UIFont, symbols: [String]? = nil) {
+        self.font = font
+        
+        if (symbols == nil) {
+            self.symbols = self.loadSymbols()
+        } else {
+            self.symbols = symbols!
+        }
+        
+        if let symbol = self.symbols.first {
+            let symbolImage = UIImage.imageOfSymbol(symbol, self.font)
+            
+            if (symbolImage.size.height > 0 && symbolImage.size.width > 0) {
+                self.symbolRatio = 1.0
+            } else {
+                self.symbolRatio = symbolImage.size.width/symbolImage.size.height
+            }
+        }
+    }
     
-    lazy var symbols: [String] = self.loadSymbols()
+    var symbols: [String]!
+    var symbolRatio: CGFloat = 1.0
+    
     
     fileprivate func loadSymbols() -> [String]
     {
-        //return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
-        return symbolsSortedByIntensityForAsciiCodes(0...255) // from ' ' to '~'
+        return symbolsSortedByIntensityForAsciiCodes(32...126)
     }
     
     fileprivate func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String]

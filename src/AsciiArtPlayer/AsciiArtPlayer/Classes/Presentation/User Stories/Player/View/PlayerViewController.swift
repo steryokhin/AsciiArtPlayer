@@ -49,10 +49,10 @@ class PlayerViewController: UIViewController, PlayerViewInput {
     //MARK: UI
     func setupUI() {
         let node = ASTextNode()
-        let myAttributedString = NSAttributedString(string: "")
         
-        node.attributedText = myAttributedString
+        node.attributedText = NSAttributedString(string: "")
         node.isUserInteractionEnabled = true
+        node.backgroundColor = UIColor.yellow        
         
         self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
         self.automaticallyAdjustsScrollViewInsets = false
@@ -65,8 +65,6 @@ class PlayerViewController: UIViewController, PlayerViewInput {
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview().offset(-5)
         }
-        
-        node.backgroundColor = UIColor.white
         
         self.displayNode = node
 

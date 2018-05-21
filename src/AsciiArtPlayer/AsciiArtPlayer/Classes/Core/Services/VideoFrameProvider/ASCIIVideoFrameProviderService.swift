@@ -11,7 +11,8 @@ import UIKit
 import AVFoundation
 import Foundation
 
-
+// 1920.0, 1080.0 - image
+// 16, 16 - pixel (for example)
 
 /// Class to generate frames for given Video URL
 class ASCIIVideoFrameProviderService: VideoFrameProviderServiceProtocol {
@@ -61,6 +62,7 @@ class ASCIIVideoFrameProviderService: VideoFrameProviderServiceProtocol {
                 // Rotate first because the orientation is lost when resizing.
                 let rotatedImage = frameImg.imageRotatedToPortraitOrientation()
                 let resizedImage = rotatedImage.imageConstrainedToMaxSize(self.configuration.maxImageSize)
+                QL2("rotatedImage size: \(rotatedImage.size), resizedImage: \(resizedImage.size)")
                 let asciiArtist = AsciiArtist(resizedImage, self.configuration.palette)
                 let asciiArt = asciiArtist.createAsciiArt()
 
